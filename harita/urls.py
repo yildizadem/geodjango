@@ -21,6 +21,6 @@ from harita import views
 urlpatterns = [
     path('', views.index, name="index"),
     path('states', views.states, name="states"),
-    path('layerWms', views.layerWms, name="layerWms"),
-    path('layerWfs', views.layerWfs, name="layerWfs")
+    path('layerwms', views.layerWms, name="layerWms"),
+    path('layerwfs', views.layerWfs, name="layerWfs")
 ]

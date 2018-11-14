@@ -1,7 +1,7 @@
 let source = new ol.source.Vector({
     format: new ol.format.GeoJSON(),
     url: function (extent) {
-        return "http://127.0.0.1:8000/layerWfs?service=WFS&version=1.0.0&request=GetFeature&typeName=postgresql%3Aharita_state&" + extent.join(",") + "&outputFormat=application%2Fjson"
+        return "http://127.0.0.1:8000/layerwfs?service=WFS&version=1.0.0&request=GetFeature&typeName=postgresql%3Aharita_state&" + extent.join(",") + "&outputFormat=application%2Fjson"
     },
     strategy: ol.loadingstrategy.bbox
 });
@@ -33,7 +33,7 @@ let vector = new ol.layer.Vector({
 let untiled = new ol.layer.Image({
     source: new ol.source.ImageWMS({
         ratio: 1,
-        url: 'http://localhost:8000/layerWms',
+        url: 'http://127.0.0.1:8000/layerwms',
         params: {
             'FORMAT': "image/png",
             'VERSION': '1.1.1',
@@ -46,7 +46,7 @@ let untiled = new ol.layer.Image({
 
 let raster = new ol.layer.Tile({source: new ol.source.OSM()})
 let map = new ol.Map({
-    layers: [raster, vector],
+    layers: [raster, vector, untiled],
     target: "map",
     view: new ol.View({
         center: [35, 39],
